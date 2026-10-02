@@ -1,0 +1,87 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Kompilacja (bez HEX)",
+            "type": "process",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile",
+                "-f",
+                "Makefile.user",
+                "compile"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Budowanie projektu",
+            "type": "process",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile",
+                "-f",
+                "Makefile.user",
+                "all"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Programowanie Nucleo",
+            "type": "process",
+            "command": "make",
+            "args": [
+                "-f",
+                "Makefile",
+                "-f",
+                "Makefile.user",
+                "program"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Kompilacja i programowanie",
+            "dependsOn": [
+                "Budowanie projektu",
+                "Programowanie Nucleo"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build MPU6050Monitor",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/MPU6050Monitor/MPU6050Monitor.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run MPU6050Monitor",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/MPU6050Monitor/MPU6050Monitor.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

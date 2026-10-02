@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug NUCLEO-F103RB (ST-LINK)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/NUCLEO_F103RB_TemplateProject.elf",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/ST/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gdb.exe",
+            "debugServerPath": "C:/ST/STM32CubeCLT/STLink-gdb-server/bin/ST-LINK_gdbserver.exe",
+            "debugServerArgs": "-d -p 61234 -cp C:/ST/STM32CubeCLT/STM32CubeProgrammer/bin",
+            "serverStarted": ".*Waiting for debugger connection.*",
+            "filterStdout": true,
+            "filterStderr": true,
+            "serverLaunchTimeout": 20000,
+            "preLaunchTask": "Kompilacja i programowanie",
+            "stopAtEntry": true,
+            "launchCompleteCommand": "exec-continue",
+            "setupCommands": [
+                {
+                    "description": "Connect GDB to the ST-LINK server",
+                    "text": "target remote localhost:61234",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "Debug MPU6050Monitor (C#)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build MPU6050Monitor",
+            "program": "${workspaceFolder}/MPU6050Monitor/bin/Debug/net9.0-windows/MPU6050Monitor.dll",
+            "cwd": "${workspaceFolder}/MPU6050Monitor",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        }
+    ]
+}

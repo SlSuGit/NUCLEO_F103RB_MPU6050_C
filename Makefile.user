@@ -1,0 +1,6 @@
+.PHONY: all clean compile program
+
+compile: $(OBJECTS)
+
+program: $(BUILD_DIR)/$(TARGET).hex
+	STM32_Programmer_CLI -c port=SWD -w $< -v -rst

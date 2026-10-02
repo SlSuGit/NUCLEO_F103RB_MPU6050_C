@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "STM32F1",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USE_HAL_DRIVER",
+                "STM32F103xB"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "C:\\ST\\STM32CubeCLT\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m3",
+                "-mthumb"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}
